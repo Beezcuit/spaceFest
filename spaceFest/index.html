@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mars Fest 2060 - Çekiliş</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <body>
+      <a id="adminLink" href="admin-panel.html">Admin Panel</a>
+      <!-- diğer içerikler -->
+    </body>
+
+    <hr />
+    <video autoplay muted loop id="bgVideo">
+      <source src="mars-background4.mp4" type="video/mp4" />
+      Tarayıcınız video etiketini desteklemiyor.
+    </video>
+
+    <div class="container">
+      <h1>Mars Fest 2060 🎶🚀</h1>
+      <p>Elektronik müzik konseri için büyük çekilişe katıl!</p>
+      <p id="counter">Şu ana kadar <strong>0</strong> kişi katıldı!</p>
+
+      <form id="raffleForm">
+        <label for="name">Adınız ve Soyadınız:</label>
+        <input type="text" id="name" required />
+
+        <label for="email">E-posta:</label>
+        <input type="email" id="email" required />
+
+        <div class="secim-alani">
+          <p class="secim-baslik">Space Shuttle Seçimi:</p>
+
+          <!-- Ücretsiz Katılım Butonu -->
+      <div class="ucretsiz-katilim">
+  <button class="free-btn" type="button" onclick="ucretsizKatil()">
+    🎟️ Ücretsiz VIP Araç Çekilişine Katıl !
+  </button>
+  <div id="emailWarning" class="uyari-mesaji" style="display: none;">
+    ⚠️ Bu e-posta ile zaten çekilişe katıldınız!
+  </div>
+</div>
+
+
+        <div class="arac-tablosu">
+          <h3>🚀 Araç Seçenekleri Karşılaştırması</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Özellik</th>
+                <th>VIP Araç</th>
+                <th>Ekonomik Araç</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hız</td>
+                <td>🚀 Işık hızının %80'i</td>
+                <td>🛸 Işık hızının %120'si</td>
+              </tr>
+              <tr>
+                <td>Konfor</td>
+                <td>🛋️ Masajlı koltuk + VR Sinema</td>
+                <td>💺 Standart koltuk</td>
+              </tr>
+              <tr>
+                <td>Yemek & İkram</td>
+                <td>🍽️ Şef menüsü + sınırsız içecek</td>
+                <td>🥤 Atıştırmalık paket</td>
+              </tr>
+              <tr>
+                <td>Görüntüleme</td>
+                <td>🌌 Panoramik cam tavan</td>
+                <td>🪟 Küçük yan pencereler</td>
+              </tr>
+              <tr>
+                <td>Giriş Önceliği</td>
+                <td>🛂 Özel VIP girişi</td>
+                <td>🚶 Genel giriş</td>
+              </tr>
+              <tr>
+                <td>Çekiliş Avantajı</td>
+                <td>🎫 2 Kat Kazanma Şansı</td>
+                <td>🎟️ Normal Şans</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="info-box">
+            <h3>Mars Fest Nedir?</h3>
+            <p>
+              Güneş Sistemi'nin ilk elektronik müzik festivali!<br />
+              Mars atmosferinde lazer gösterileri, dans eden robotlar ve sürpriz
+              sanatçılar seni bekliyor. Çekilişe katıl ve bilet kazanma şansı
+              yakala!
+            </p>
+            <h3>Katılım Şartları Nelerdir?</h3>
+            <p>
+              Güneş Sistemi'nin ilk elektronik müzik festivali!<br />
+              Mars atmosferinde lazer gösterileri, dans eden robotlar ve sürpriz
+              sanatçılar seni bekliyor. Çekilişe katıl ve bilet kazanma şansı
+              yakala! (18 yaşın altındaki katılımcılarımız için ebeveyn referansı gerekmektedir.)
+            </p>
+          </div>
+          <div class="arac-satin-al">
+  <h3>🎫 Katılım Seçenekleri</h3>
+
+  <form id="vipForm">
+    <h4>🚀 VIP Araç Yolcu Bilgileri</h4>
+<input type="text" placeholder="Ad Soyad" id="vipName" class="form-input" required>
+<input type="email" placeholder="E-posta" id="vipEmail" class="form-input" required>
+<input type="date" id="vipDOB" class="form-input" required> <br>
+
+ 
+    <button type="button" class="btc-btn" onclick="vipSatinAl()">💰 0.0025 BTC ile Satın Al</button>
+  </form>
+
+  <form id="ekoForm">
+    <h4>🛸 Ekonomik Araç Yolcu Bilgileri</h4>
+<input type="text" placeholder="Ad Soyad" id="ekoName" class="form-input" required>
+<input type="email" placeholder="E-posta" id="ekoEmail" class="form-input" required>
+<input type="date" id="ekoDOB" class="form-input" required>
+
+    <button type="button" class="btc-btn" onclick="ekoSatinAl()">💰 0.0010 BTC ile Satın Al</button>
+  </form>
+</div>
+
+        </div>
+      </form>
+      <hr />
+
+      <div id="message"></div>
+      <hr />
+      <div class="terminal" id="terminalBox">
+        <p>> Mars Fest Shuttle Programı başlatılıyor...</p>
+        <p>> Katılımcı veri tabanı taranıyor...</p>
+        <p>> Çekiliş modülü yüklendi ✅</p>
+      </div>
+    </div>
+    <audio id="bgMusic" loop>
+      <source src="nanobits.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="musicToggle" onclick="toggleMusic()">🔊</button>
+    <audio id="bgMusic" loop autoplay>
+      <source src="mars-techno.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

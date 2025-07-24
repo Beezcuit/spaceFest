@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <a href="index.html" class="back-home">🏠 Ana Sayfaya Dön</a>
+
+    <title>Admin Paneli</title>
+  </head>
+
+  <body>
+    <button
+      onclick="logout()"
+      style="position: absolute; top: 20px; right: 20px"
+    >
+      Çıkış Yap
+    </button>
+
+    <script>
+      function logout() {
+        localStorage.removeItem("adminLoggedIn");
+        window.location.href = "login.html";
+      }
+    </script>
+
+    <div class="admin-wrapper">
+      <!-- Sol Panel -->
+      <div class="admin-left">
+        <h2 class="cekilis">🎁 Çekilişi Başlat (Admin)</h2>
+        <button id="drawBtn">Kazananları Belirle</button>
+        <ul id="winnersList"></ul>
+      </div>
+
+      <!-- Sağ Panel -->
+      <div class="admin-right">
+        <h2>👩‍🚀 Katılımcı Kontrol Paneli</h2>
+        <table id="participantTable">
+          <thead>
+            <tr>
+              <th>İsim</th>
+              <th>E-posta</th>
+              <th>Seçim</th>
+              <th>Güncelle</th>
+              <th>Durum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Katılımcılar JS ile buraya eklenecek -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
+  </body>
+  <script>
+    // Giriş yapılmamışsa geri yönlendir
+    if (localStorage.getItem("adminLoggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</html>
