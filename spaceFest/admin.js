@@ -1,27 +1,27 @@
 window.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.querySelector("#participantTable tbody");
 
-  // Katılımcı verileri localStorage'dan alınıyor
+
   const participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
-  // Tabloyu temizle (çift giriş olmasın)
+
   tableBody.innerHTML = "";
 
   participants.forEach((participant, index) => {
-    // Her satır
+
     const row = document.createElement("tr");
 
-    // İsim
+   
     const nameCell = document.createElement("td");
     nameCell.textContent = participant.name;
     row.appendChild(nameCell);
 
-    // E-posta
+
     const emailCell = document.createElement("td");
     emailCell.textContent = participant.email;
     row.appendChild(emailCell);
 
-    // Durum (dropdown)
+
     const statusCell = document.createElement("td");
     const select = document.createElement("select");
     ["Aktif", "Kazandı", "Diskalifiye"].forEach(optionText => {
@@ -63,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
     updateCell.appendChild(saveBtn);
     row.appendChild(updateCell);
 
-// Durum Hücresi
+
 const statusTextCell = document.createElement("td");
 const statusText = document.createElement("span");
 statusText.textContent = participant.status || "-";
@@ -80,7 +80,7 @@ row.appendChild(statusTextCell);
 document.getElementById("drawBtn").addEventListener("click", () => {
   const participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
-  // 🔍 Sadece Aktif olan katılımcılar
+  
   const vipParticipants = participants.filter(p => p.status === "Aktif");
 
   if (vipParticipants.length < 3) {
@@ -88,7 +88,7 @@ document.getElementById("drawBtn").addEventListener("click", () => {
     return;
   }
 
-  // 🎯 Rastgele 3 kazanan seç
+
   const winners = [];
   while (winners.length < 3) {
     const index = Math.floor(Math.random() * vipParticipants.length);
@@ -98,7 +98,7 @@ document.getElementById("drawBtn").addEventListener("click", () => {
     }
   }
 
-  // 📝 Kazananları ekrana yaz
+  
   const winnersList = document.getElementById("winnersList");
   winnersList.innerHTML = "";
 
@@ -108,7 +108,6 @@ document.getElementById("drawBtn").addEventListener("click", () => {
     winnersList.appendChild(li);
   });
 
-  // 🏷️ Kazananların durumunu güncelle
   participants.forEach(p => {
     if (winners.find(w => w.email === p.email)) {
       p.status = "Kazandı";
@@ -116,7 +115,4 @@ document.getElementById("drawBtn").addEventListener("click", () => {
   });
 
   localStorage.setItem("participants", JSON.stringify(participants));
-
-  // Sayfayı yenile ki güncellenmiş durumlar tabloya yansısın
-  // location.reload();
 });

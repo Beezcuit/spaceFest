@@ -25,14 +25,14 @@
     </script>
 
     <div class="admin-wrapper">
-      <!-- Sol Panel -->
+  
       <div class="admin-left">
         <h2 class="cekilis">🎁 Çekilişi Başlat (Admin)</h2>
         <button id="drawBtn">Kazananları Belirle</button>
         <ul id="winnersList"></ul>
       </div>
 
-      <!-- Sağ Panel -->
+    
       <div class="admin-right">
         <h2>👩‍🚀 Katılımcı Kontrol Paneli</h2>
         <table id="participantTable">
@@ -46,7 +46,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Katılımcılar JS ile buraya eklenecek -->
           </tbody>
         </table>
       </div>
@@ -55,7 +54,6 @@
     <script src="admin.js"></script>
   </body>
   <script>
-    // Giriş yapılmamışsa geri yönlendir
     if (localStorage.getItem("adminLoggedIn") !== "true") {
       window.location.href = "login.html";
     }

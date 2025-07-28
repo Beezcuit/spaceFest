@@ -21,13 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
   function kelimeYaz(satir, element, kelimeler, i = 0) {
     if (i < kelimeler.length) {
       element.textContent += kelimeler[i] + " ";
-      setTimeout(() => kelimeYaz(satir, element, kelimeler, i + 1), 700); // kelime arası hız
+      setTimeout(() => kelimeYaz(satir, element, kelimeler, i + 1), 700); 
     } else {
       index++;
       if (index < satirlar.length) {
-        setTimeout(() => yazSatir(), 900); // sonraki satıra geçmeden bekleme
+        setTimeout(() => yazSatir(), 900); 
       } else {
-        // tüm satırlar bittiğinde sıfırla
+      
         setTimeout(() => {
           terminal.innerHTML = "";
           index = 0;
@@ -52,17 +52,17 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("counter").querySelector("strong");
 
-  // Sayacı localStorage'tan al ya da 4800 ile başlat
+
   let hedef = parseInt(localStorage.getItem("katilimSayisi")) || 1679;
 
-  // Her sayfa yenilemede 2–3 rastgele kişi ekle
-  const yeniKatilim = Math.floor(Math.random() * 2) + 2; // 2 veya 3
+
+  const yeniKatilim = Math.floor(Math.random() * 2) + 2; 
   hedef += yeniKatilim;
 
-  // Güncellenmiş hedefi sakla
+ 
   localStorage.setItem("katilimSayisi", hedef);
 
-  // Sayımı başlat
+
   let current = 0;
 
   function sayacArtir() {
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", () => {
       current++;
       counterEl.textContent = current.toLocaleString();
 
-      // Son 50 sayıda yavaşlat
+    
       const kalan = hedef - current;
       let hiz = 5;
       if (kalan < 20) {
@@ -101,7 +101,7 @@ document.getElementById("raffleForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // Katılımcı listesi kontrolü
+  
   let participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
   const dahaOnceKatilmisMi = participants.some(p => p.email === email);
@@ -112,14 +112,14 @@ document.getElementById("raffleForm").addEventListener("submit", function (e) {
     return;
   }
 
-  // Yeni katılımcıyı kaydet
+  
   participants.push({ name, email, ship });
   localStorage.setItem("participants", JSON.stringify(participants));
 
   messageBox.textContent = "Çekilişe başarıyla katıldınız! 🚀";
   messageBox.style.color = "#00ffcc";
 
-  // Formu isteğe bağlı sıfırla
+
   document.getElementById("raffleForm").reset();
 });
 
@@ -131,7 +131,7 @@ document.getElementById("drawBtn").addEventListener("click", function () {
   const winnersList = document.getElementById("winnersList");
   winnersList.innerHTML = "";
 
-  // Daha önce çekiliş yapıldıysa, localStorage'tan kazananları getir
+ 
   const oncekiKazananlar = JSON.parse(localStorage.getItem("kazananlar"));
 
   if (oncekiKazananlar) {
@@ -145,7 +145,7 @@ document.getElementById("drawBtn").addEventListener("click", function () {
     return;
   }
 
-  // Katılımcı verisi alınır
+  
   let participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
   if (participants.length < 3) {
@@ -174,7 +174,7 @@ document.getElementById("drawBtn").addEventListener("click", function () {
     kazananMetinleri.push("Ekonomik araç seçen kimse yoktu.");
   }
 
-  // Sonuçları göster
+ 
   kazananMetinleri.forEach(kisi => {
     const li = document.createElement("li");
     li.textContent = kisi;
@@ -182,7 +182,7 @@ document.getElementById("drawBtn").addEventListener("click", function () {
     winnersList.appendChild(li);
   });
 
-  // Kazananları sakla
+
   localStorage.setItem("kazananlar", JSON.stringify(kazananMetinleri));
 });
 
@@ -258,13 +258,13 @@ function ucretsizKatil() {
 
   const participants = JSON.parse(localStorage.getItem("participants") || "[]");
 
-  // Aynı e-posta varsa uyar
+ 
   if (participants.some(p => p.email === email)) {
     emailWarning.style.display = "block";
     return;
   }
 
-  // Katılımcıyı kaydet (sadece VIP)
+ 
   participants.push({
     name: name,
     email: email,
